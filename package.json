@@ -6,7 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Will Laurance <w.laurance@gmail.com>",
+  "contributors": [{
+    "name": "Kris Kelly",
+    "email": "kristopherbkelly@gmail.com"
+  }],
   "license": "MIT",
   "dependencies": {
     "browser-sync": "^1.7.2",

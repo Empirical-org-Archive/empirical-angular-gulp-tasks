@@ -4,6 +4,8 @@ var args = require('yargs').argv;
 var allowedEnvs = ['development', 'staging', 'production'];
 var env = (args.env || 'development').toLowerCase();
 
+var gutil = require('gulp-util');
+
 if (allowedEnvs.indexOf(env) === -1) {
   gutil.log('Invalid value', gutil.colors.red(args.env), 'for',  gutil.colors.magenta('--env'), 'option. Allowed values :', '['+envs.map(function(env){return gutil.colors.magenta(env);}).join(', ')+']');
   process.exit();

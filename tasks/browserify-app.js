@@ -44,6 +44,7 @@ gulp.task('browserify:app', function () {
         var end = process.hrtime(start);
         var prettyTime = prettyHrtime(end);
         gutil.log('Bundled ' + gutil.colors.magenta(config.output) + ' after ' + gutil.colors.magenta(prettyTime));
+        gulp.start('index');
       });
 
   }

@@ -36,7 +36,7 @@ gulp.task('browserify:app', function () {
       .pipe(ngAnnotate())
       .pipe(uglify({mangle: false}))
       .pipe(gulpif(env.isDev(), sourcemaps.write('./')))
-      .pipe(gulpif(env.isProd(), rev()))
+      .pipe(rev())
       .pipe(gulpif(env.isProd(), rename({suffix: '.min'})))
       .pipe(gulp.dest(config.dest))
       .on('end', function () {

@@ -100,12 +100,17 @@ var configuration = {
     jade: {},
     templateCache: {
       filename: paths.tmp_templates_output,
-        options: {
+      options: {
         moduleSystem: 'Browserify',
-          standalone: true,
-          module: paths.tmp_templates_module,
-          base: function (file) {
-          return path.basename(file.relative);
+        standalone: true,
+        module: paths.tmp_templates_module,
+        base: function (file) {
+          var custom_fn = paths.template_name_fn;
+          if (typeof(custom_fn) === 'function') {
+            return custom_fn(file);
+          } else {
+            return path.basename(file.relative);
+          }
         }
       }
     },

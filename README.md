@@ -78,8 +78,66 @@ var gulp = require('gulp');
 require('empirical-angular-gulp-tasks').defineTasks(gulp, config);
 ```
 
+##Commands
+
+Setting up these gulp tasks will give you:
+
+* `gulp` or `gulp --env=development` which will run your app on PORT 3000
+   and watch for file changes.
+* `gulp --env=production` will create a production build with in the `./dist` folder
+    by default.
+
+
 ##Environments
 
 Our gulp tasks module provides the idea of building
 the application in different environments.
 
+We support two environments fully:
+
+* `development`
+* `production`
+
+And `staging` partially
+
+###Environment Specific Variables
+
+We use [gulp-ng-constant](https://www.npmjs.com/package/gulp-ng-constant) to inject
+environment specific variables into your application. Because we use [browserify](http://browserify.org/)
+you can require the specific path the generated contants module from your application
+code.
+
+Here is an example from [Quill Grammar](https://github.com/empirical-org/Quill-Grammar)
+
+In `https://github.com/empirical-org/Quill-Grammar/tree/master/src/scripts/development.config.json`
+we define a few variables:
+```json
+{
+  "environment": "development",
+  "firebaseUrl": "https://quillgrammarstaging.firebaseio.com/",
+  "empiricalBaseURL": "https://staging.quill.org/api/v1/",
+  "portholeProxy": "https://staging.quill.org/porthole_proxy"
+}
+```
+
+Then we require the generated module from our custom gulp process:
+
+In `quill-grammar/src/scrips/app/core/core.module.js`:
+
+```js
+angular
+  .module('quill-grammar.core', [
+    'ui.router',
+    'LocalStorageModule',
+    'autofocus',
+    'duScroll',
+    'angulartics',
+    'angulartics.mixpanel',
+    require('../../../../.tmp/config').name,
+    require('../../../../.tmp/templates').name,
+    require('../../directives/index.js').name,
+  ])
+  .config(function ($analyticsProvider) {
+    $analyticsProvider.virtualPageviews(false);
+  });
+```

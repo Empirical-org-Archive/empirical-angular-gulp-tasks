@@ -20,11 +20,6 @@ var rimraf = require('gulp-rimraf');
 gulp.task('browserify:app', function () {
   var bundler = browserify(config.browserify);
 
-  if (env.isDev()) {
-    bundler = watchify(bundler);
-    bundler.on('update', bundle);
-  }
-
   function bundle () {
     gutil.log('Bundling ' + gutil.colors.magenta(config.output) + '...');
     var start = process.hrtime();
@@ -47,6 +42,11 @@ gulp.task('browserify:app', function () {
         gulp.start('index');
       });
 
+  }
+
+  if (env.isDev()) {
+    bundler = watchify(bundler);
+    bundler.on('update', bundle);
   }
 
   return bundle();

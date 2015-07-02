@@ -7,7 +7,6 @@ var gutil = require('gulp-util');
 var plumber = require('gulp-plumber');
 var templateCache = require('gulp-angular-templatecache');
 var gulpFilter = require('gulp-filter');
-var print = require('gulp-print');
 
 gulp.task('templates', function () {
   var jadeTemplates = gulpFilter(['**/**/*.jade']);

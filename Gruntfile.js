@@ -8,7 +8,7 @@ module.exports = function (grunt) {
 
   grunt.initConfig({
     jshint: {
-      all: ['*.js', 'tasks/**/*.js'],
+      all: ['*.js', 'tasks/*.js'],
       options: require('./.jshintrc.json')
     },
     jscs: {
@@ -18,12 +18,12 @@ module.exports = function (grunt) {
       }
     },
     lintspaces: {
-      src: ['*', 'tasks/**/*.js'],
+      src: ['*.js', 'tasks/*.js'],
       options: {
         editorconfig: '.editorconfig'
       }
     }
   });
 
-  grunt.registerTask('lint', ['jshint', 'jscs']);
+  grunt.registerTask('lint', ['jshint', 'jscs', 'lintspaces']);
 };

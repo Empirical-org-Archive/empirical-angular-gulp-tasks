@@ -21,4 +21,3 @@ function defineTasks(gulp, config) {
 module.exports = {
   defineTasks: defineTasks
 };
-

@@ -129,4 +129,4 @@ var configuration = {
 };
 
 return configuration;
-}
+};

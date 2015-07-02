@@ -1,7 +1,6 @@
 'use strict';
 
 var args = require('yargs').argv;
-var gutil = require('gulp-util');
 var env = require('./env');
 
 module.exports = {
@@ -18,16 +17,16 @@ module.exports = {
     }
   },
   env: {
-    isDev: function() {
+    isDev: function () {
       return env === 'development';
     },
-    isProd: function() {
+    isProd: function () {
       return env === 'production';
     },
-    isStaging: function() {
+    isStaging: function () {
       return env === 'staging';
     },
-    getEnv: function() {
+    getEnv: function () {
       return env;
     }
   }

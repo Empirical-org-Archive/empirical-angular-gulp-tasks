@@ -1,11 +1,10 @@
 'use strict';
 
-module.exports = function(gulp) {
+module.exports = function (gulp) {
+  var env = require('../utilities').env;
+  var runSequence = require('run-sequence').use(gulp);
 
-var env = require('../utilities').env;
-var runSequence = require('run-sequence').use(gulp);
-
-gulp.task('default', function () {
+  gulp.task('default', function () {
   if (env.isDev()) {
     runSequence(
       ['clean'],
@@ -24,5 +23,4 @@ gulp.task('default', function () {
     );
   }
 });
-
 };

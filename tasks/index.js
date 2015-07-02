@@ -1,15 +1,14 @@
 'use strict';
 
-module.exports = function(gulp, config) {
+module.exports = function (gulp, config) {
+  var jade = require('gulp-jade');
+  var gutil = require('gulp-util');
+  var inject = require('gulp-inject');
+  var plumber = require('gulp-plumber');
 
-var jade = require('gulp-jade');
-var gutil = require('gulp-util');
-var inject = require('gulp-inject');
-var plumber = require('gulp-plumber');
-
-gulp.task('index', function () {
+  gulp.task('index', function () {
   return gulp.src(config.src)
-    .pipe(plumber(function(error){
+    .pipe(plumber(function (error) {
       gutil.log(gutil.colors.red(error.message));
       this.emit('end');
     }))
@@ -17,5 +16,4 @@ gulp.task('index', function () {
     .pipe(jade(config.jade))
     .pipe(gulp.dest(config.dest));
 });
-
 };

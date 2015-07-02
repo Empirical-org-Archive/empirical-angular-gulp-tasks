@@ -1,27 +1,28 @@
 'use strict';
 
-module.exports = function(paths) {
+module.exports = function (paths) {
+  var path = require('path');
+  var utilities = require('./utilities');
 
-var path = require('path');
-var utilities = require('./utilities');
+  var dest;
+  switch (utilities.env.getEnv()) {
+    case 'development':
+    case 'staging': {
+      dest = paths.build;
+      break;
+    }
+    case 'production': {
+      dest = paths.dist;
+      break;
+    }
+  }
 
-var dest;
-switch(utilities.env.getEnv()) {
-  case 'development':
-  case 'staging':
-    dest = paths.build;
-    break;
-  case 'production':
-    dest = paths.dist;
-    break;
-}
-
-// Configuration for each task
-var configuration = {
+  // Configuration for each task
+  var configuration = {
   assets: {
     src: path.join(paths.src, paths.assets, '**/*'),
     imagesFilter: path.join(paths.assets_images, '**/*'),
-    imagemin: { optimizationLevel: 5, progressive: true, interlaced: true },
+    imagemin: {optimizationLevel: 5, progressive: true, interlaced: true},
     dest: path.join(dest, paths.assets)
   },
   browserify: {
@@ -64,13 +65,13 @@ var configuration = {
   },
   index: {
     src: path.join(paths.src, paths.scripts, paths.scripts_index),
-      injectSrc: [
-      path.join(dest, paths.scripts_vendors_output_partial + '.js'),
-      path.join(dest, paths.scripts_app_output_partial + '.{css,js}')
-    ],
-      inject: {
+    injectSrc: [
+    path.join(dest, paths.scripts_vendors_output_partial + '.js'),
+    path.join(dest, paths.scripts_app_output_partial + '.{css,js}')
+  ],
+    inject: {
       ignorePath: path.join(dest),
-        addRootSlash: false
+      addRootSlash: false
     },
     jade: {},
     dest: dest
@@ -105,9 +106,9 @@ var configuration = {
         standalone: true,
         module: paths.tmp_templates_module,
         base: function (file) {
-          var custom_fn = paths.template_name_fn;
-          if (typeof(custom_fn) === 'function') {
-            return custom_fn(file);
+          var customFn = paths.template_name_fn;
+          if (typeof (customFn) === 'function') {
+            return customFn(file);
           } else {
             return path.basename(file.relative);
           }
@@ -128,5 +129,5 @@ var configuration = {
   }
 };
 
-return configuration;
-}
+  return configuration;
+};

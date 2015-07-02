@@ -1,4 +1,4 @@
-Empirical Angular Gulp Tasks
+Empirical Angular Gulp Tasks [![Build Status](https://travis-ci.org/empirical-org/empirical-angular-gulp-tasks.svg?branch=master)](https://travis-ci.org/empirical-org/empirical-angular-gulp-tasks)
 ----------------------------
 
 The purpose of this repository is to have a central

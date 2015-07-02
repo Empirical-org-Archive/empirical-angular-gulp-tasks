@@ -1,26 +1,25 @@
 'use strict';
 
-module.exports = function(gulp, config) {
+module.exports = function (gulp, config) {
+  var rev = require('gulp-rev');
+  var gulpif = require('gulp-if');
+  var gutil = require('gulp-util');
+  var watchify = require('watchify');
+  var uglify = require('gulp-uglify');
+  var rename = require('gulp-rename');
+  var buffer = require('vinyl-buffer');
+  var env = require('../utilities').env;
+  var browserify = require('browserify');
+  var sourcemaps = require('gulp-sourcemaps');
+  var source = require('vinyl-source-stream');
+  var prettyHrtime = require('pretty-hrtime');
+  var ngAnnotate = require('gulp-ng-annotate');
+  var rimraf = require('gulp-rimraf');
 
-var rev = require('gulp-rev');
-var gulpif = require('gulp-if');
-var gutil = require('gulp-util');
-var watchify = require('watchify');
-var uglify = require('gulp-uglify');
-var rename = require('gulp-rename');
-var buffer = require('vinyl-buffer');
-var env = require('../utilities').env;
-var browserify = require('browserify');
-var sourcemaps = require('gulp-sourcemaps');
-var source = require('vinyl-source-stream');
-var prettyHrtime = require('pretty-hrtime');
-var ngAnnotate = require('gulp-ng-annotate');
-var rimraf = require('gulp-rimraf');
-
-gulp.task('browserify:app', function () {
+  gulp.task('browserify:app', function () {
   var bundler = browserify(config.browserify);
 
-  function bundle () {
+  function bundle() {
     gutil.log('Bundling ' + gutil.colors.magenta(config.output) + '...');
     var start = process.hrtime();
     return gulp.src(config.dest + '/app**.js*')
@@ -41,7 +40,6 @@ gulp.task('browserify:app', function () {
         gutil.log('Bundled ' + gutil.colors.magenta(config.output) + ' after ' + gutil.colors.magenta(prettyTime));
         gulp.start('index');
       });
-
   }
 
   if (env.isDev()) {
@@ -51,5 +49,4 @@ gulp.task('browserify:app', function () {
 
   return bundle();
 });
-
 };

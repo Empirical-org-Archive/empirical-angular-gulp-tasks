@@ -1,11 +1,9 @@
 'use strict';
 
-module.exports = function(gulp, config) {
+module.exports = function (gulp, config) {
+  var del = require('del');
 
-var del = require('del');
-
-gulp.task('clean', function (cb) {
+  gulp.task('clean', function (cb) {
   del(config.src, cb);
 });
-
 };

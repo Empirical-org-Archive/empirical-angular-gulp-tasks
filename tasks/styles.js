@@ -1,19 +1,18 @@
 'use strict';
 
-module.exports = function(gulp, config) {
+module.exports = function (gulp, config) {
+  var rev = require('gulp-rev');
+  var gulpif = require('gulp-if');
+  var csso = require('gulp-csso');
+  var gutil = require('gulp-util');
+  var rename = require('gulp-rename');
+  var sass = require('gulp-ruby-sass');
+  //var plumber = require('gulp-plumber');
+  var env = require('../utilities').env;
+  var sourcemaps = require('gulp-sourcemaps');
+  var autoprefixer = require('gulp-autoprefixer');
 
-var rev = require('gulp-rev');
-var gulpif = require('gulp-if');
-var csso = require('gulp-csso');
-var gutil = require('gulp-util');
-var rename = require('gulp-rename');
-var sass = require('gulp-ruby-sass');
-//var plumber = require('gulp-plumber');
-var env = require('../utilities').env;
-var sourcemaps = require('gulp-sourcemaps');
-var autoprefixer = require('gulp-autoprefixer');
-
-gulp.task('styles', function () {
+  gulp.task('styles', function () {
   return sass(config.src, config.sass)
     .on('error', function (error) {
       gutil.log(gutil.colors.red(error.message));
@@ -43,5 +42,4 @@ gulp.task('styles', function () {
     .pipe(gulp.dest(config.dest));
     */
 });
-
 };

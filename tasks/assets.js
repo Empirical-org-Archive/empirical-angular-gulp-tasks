@@ -1,11 +1,10 @@
 'use strict';
 
-module.exports = function(gulp, config) {
+module.exports = function (gulp, config) {
+  var filter = require('gulp-filter');
+  var imagemin = require('gulp-imagemin');
 
-var filter = require('gulp-filter');
-var imagemin = require('gulp-imagemin');
-
-gulp.task('assets', function () {
+  gulp.task('assets', function () {
   var imagesFilter = filter(config.imagesFilter);
 
   return gulp.src(config.src)
@@ -14,5 +13,4 @@ gulp.task('assets', function () {
     .pipe(imagesFilter.restore())
     .pipe(gulp.dest(config.dest));
 });
-
 };

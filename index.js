@@ -16,7 +16,6 @@ function defineTasks(gulp, config) {
   require('./tasks/templates')(gulp, allConfig.templates);
   require('./tasks/watch')(gulp, allConfig.watch);
   require('./tasks/default')(gulp);
-
 }
 
 module.exports = {

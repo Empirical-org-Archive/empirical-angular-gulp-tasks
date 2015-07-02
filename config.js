@@ -104,9 +104,9 @@ module.exports = function (paths) {
         standalone: true,
         module: paths.tmp_templates_module,
         base: function (file) {
-          var custom_fn = paths.template_name_fn;
-          if (typeof (custom_fn) === 'function') {
-            return custom_fn(file);
+          var customFn = paths.template_name_fn;
+          if (typeof (customFn) === 'function') {
+            return customFn(file);
           } else {
             return path.basename(file.relative);
           }

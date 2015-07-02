@@ -4,7 +4,7 @@
   "description": "Gulp tasks (and configuration) for Empirical Angular apps\"",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./test.sh"
   },
   "author": "Will Laurance <w.laurance@gmail.com>",
   "contributors": [

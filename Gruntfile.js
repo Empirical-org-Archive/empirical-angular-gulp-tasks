@@ -1,3 +1,5 @@
+var fs = require('fs');
+
 module.exports = function (grunt) {
   'use strict';
 
@@ -9,7 +11,7 @@ module.exports = function (grunt) {
   grunt.initConfig({
     jshint: {
       all: ['*.js', 'tasks/*.js'],
-      options: require('./.jshintrc.json')
+      options: JSON.parse(fs.readFileSync(__dirname + '/.jshintrc', 'utf8'))
     },
     jscs: {
       all: '<%= jshint.all %>',

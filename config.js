@@ -7,12 +7,14 @@ module.exports = function (paths) {
   var dest;
   switch (utilities.env.getEnv()) {
     case 'development':
-    case 'staging':
+    case 'staging': {
       dest = paths.build;
       break;
-    case 'production':
+    }
+    case 'production': {
       dest = paths.dist;
       break;
+    }
   }
 
   // Configuration for each task

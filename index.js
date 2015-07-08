@@ -11,9 +11,11 @@ function defineTasks(gulp, config) {
   require('./tasks/config')(gulp, allConfig.config);
   require('./tasks/index')(gulp, allConfig.index);
   require('./tasks/lint')(gulp, allConfig.lint);
+  require('./tasks/scripts')(gulp, {});
   require('./tasks/serve')(gulp, allConfig.serve);
   require('./tasks/styles')(gulp, allConfig.styles);
   require('./tasks/templates')(gulp, allConfig.templates);
+  require('./tasks/tests')(gulp, {});
   require('./tasks/watch')(gulp, allConfig.watch);
   require('./tasks/default')(gulp);
 }

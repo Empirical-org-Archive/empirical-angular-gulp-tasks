@@ -7,19 +7,13 @@ module.exports = function (gulp) {
   gulp.task('default', function () {
   if (env.isDev()) {
     runSequence(
-      ['clean'],
-      ['assets', 'config', 'lint', 'styles', 'templates'],
-      ['browserify:app', 'browserify:vendors'],
-      ['index'],
+      ['scripts'],
       ['watch'],
       ['serve']
     );
   } else if (env.isProd() || env.isStaging()) {
     runSequence(
-      ['clean'],
-      ['assets', 'config', 'lint', 'styles', 'templates'],
-      ['browserify:app', 'browserify:vendors'],
-      ['index']
+      ['scripts']
     );
   }
 });

@@ -9,6 +9,7 @@ module.exports = function (gulp, config) {
   var prettyHrtime = require('pretty-hrtime');
   var mainBowerFiles = require('main-bower-files');
   var gulpconcat = require('gulp-concat');
+  var sourcemaps = require('gulp-sourcemaps');
   var uglify = require('gulp-uglify');
 
   gulp.task('browserify:vendors', function () {
@@ -17,9 +18,11 @@ module.exports = function (gulp, config) {
 
     return gulp.src(mainBowerFiles({filter: '**/*.js'}))
       .pipe(gulpconcat(config.output))
+      .pipe(gulpif(env.isDev(), sourcemaps.init()))
       .pipe(gulpif(env.isProd(), rev()))
       .pipe(rename({suffix: '.min'}))
       .pipe(gulpif(env.isProd(), uglify()))
+      .pipe(sourcemaps.write('./'))
       .pipe(gulp.dest(config.dest))
     .on('end', function () {
       var end = process.hrtime(start);

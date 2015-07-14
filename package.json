@@ -1,6 +1,6 @@
 {
   "name": "empirical-angular-gulp-tasks",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Gulp tasks (and configuration) for Empirical Angular apps\"",
   "main": "index.js",
   "scripts": {

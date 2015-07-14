@@ -26,6 +26,9 @@ module.exports = {
     isStaging: function () {
       return env === 'staging';
     },
+    isTest: function () {
+      return env === 'test';
+    },
     getEnv: function () {
       return env;
     }

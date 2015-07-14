@@ -18,4 +18,8 @@ module.exports = function (gulp) {
   gulp.task('test:auto', function (done) {
     runTests(false, done);
   });
+
+  gulp.task('ci', ['scripts'], function (done) {
+    runTests(true, done);
+  });
 };

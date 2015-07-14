@@ -7,6 +7,7 @@ module.exports = function (paths) {
   var dest;
   switch (utilities.env.getEnv()) {
     case 'development':
+    case 'test':
     case 'staging': {
       dest = paths.build;
       break;

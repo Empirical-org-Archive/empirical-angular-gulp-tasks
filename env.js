@@ -3,7 +3,7 @@
 var args = require('yargs').argv;
 
 // Detect the environment
-var allowedEnvs = ['development', 'staging', 'production'];
+var allowedEnvs = ['development', 'staging', 'production', 'test'];
 var env = (args.env || 'development').toLowerCase();
 
 var gutil = require('gulp-util');

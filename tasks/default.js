@@ -15,6 +15,11 @@ module.exports = function (gulp) {
     runSequence(
       ['scripts']
     );
+  } else if (env.isTest()) {
+    runSequence(
+      ['scripts'],
+      ['watch']
+    );
   }
 });
 };

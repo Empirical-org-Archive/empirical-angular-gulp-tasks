@@ -7,7 +7,8 @@ module.exports = function (gulp) {
     runSequence(
       ['clean'],
       ['assets', 'config', 'lint', 'styles', 'templates'],
-      ['browserify:app', 'browserify:vendors'],
+      ['browserify:vendors'],
+      ['browserify:app'],
       ['index'],
       done
     );

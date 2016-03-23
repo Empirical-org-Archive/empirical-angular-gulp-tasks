@@ -84,7 +84,8 @@ module.exports = function (paths) {
     browserSync: {
       server: {baseDir: dest, middleware: [require('connect-history-api-fallback')]},
       open: false,
-      ghostMode: false
+      ghostMode: false,
+      port: 3001
     }
   },
   styles: {
